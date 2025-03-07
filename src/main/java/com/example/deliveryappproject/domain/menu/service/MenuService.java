@@ -138,4 +138,10 @@ public class MenuService {
         if(menu.getMenuState()==MenuState.SALE)
             throw new BadRequestException("소유한 가게를 입력해주세요.");
     }
+
+    public Menu findByMenuIdOrElseThrow(Long id) {
+        return menuRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("Not Found MenuId")
+        );
+    }
 }

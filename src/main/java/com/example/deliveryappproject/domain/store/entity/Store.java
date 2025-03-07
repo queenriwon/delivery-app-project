@@ -50,6 +50,10 @@ public class Store extends Timestamped {
         this.minOrderPrice = minOrderPrice;
     }
 
+    public Store(Long id) {
+        this.id = id;
+    }
+
     public Store(Long id, String storeName, LocalTime openAt, LocalTime closeAt, BigDecimal minOrderPrice) {
         this.id = id;
         this.storeName = storeName;

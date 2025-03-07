@@ -4,6 +4,7 @@ package com.example.deliveryappproject.domain.menu.entity;
 import com.example.deliveryappproject.domain.menu.enums.MenuState;
 import com.example.deliveryappproject.domain.store.entity.Store;
 import com.example.deliveryappproject.common.entity.Timestamped;
+import com.example.deliveryappproject.domain.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,10 @@ public class Menu  extends Timestamped {
     private BigDecimal price;
 
     private String information;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable = false)
