@@ -15,6 +15,8 @@ import org.springframework.util.StringUtils;
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j(topic = "JwtUtil")
 @Component
@@ -41,8 +43,7 @@ public class JwtUtil {
         return BEARER_PREFIX +
                 Jwts.builder()
                         .setSubject(String.valueOf(userId))
-                        .claim("email", email)
-                        .claim("userRole", userRole)
+                        .setClaims(createAccessTokenClaims(email, userRole))
                         .setExpiration(new Date(date.getTime() + ACCESS_TOKEN_TIME))
                         .setIssuedAt(date)
                         .signWith(key, signatureAlgorithm)
@@ -65,5 +66,12 @@ public class JwtUtil {
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
+    }
+
+    private static Map<String, Object> createAccessTokenClaims(String email, UserRole userRole) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("email", email);
+        map.put("userRole", userRole);
+        return map;
     }
 }
