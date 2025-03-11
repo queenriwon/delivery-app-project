@@ -1,14 +1,59 @@
 package com.example.deliveryappproject.config.aop;
 
+
+import com.example.deliveryappproject.common.annotation.Auth;
 import com.example.deliveryappproject.common.annotation.AuthPermission;
 import com.example.deliveryappproject.common.dto.AuthUser;
-import com.example.deliveryappproject.common.exception.ForbiddenException;
+import com.example.deliveryappproject.common.response.Response;
+import com.example.deliveryappproject.domain.store.dto.request.StoreCreateRequest;
+import com.example.deliveryappproject.domain.user.enums.UserRole;
+import jakarta.validation.Valid;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+/*
+@AuthPermission(role = UserRole.OWNER)
+@PostMapping
+public Response<Void> createStore(
+        @Auth AuthUser authUser,
+        @Valid @RequestBody StoreCreateRequest storeCreateRequest
+) {
+    storeService.createStore(authUser, storeCreateRequest);
+    return Response.empty();
+}
+ */
+
+@Aspect
+@Component
+public class AuthPermissionAspect {
+
+    // 어노테이션에서 경로를 지정하는 방법
+    @Around("@annotation(com.example.deliveryappproject.config.aop.annotation.LogTrace)")
+    public Object checkPermission(ProceedingJoinPoint joinPoint) throws Throwable {
+    }
+
+    // authPermission 과 매개변수 AuthPermission authPermission 매핑하는 방법
+    @Around("@annotation(authPermission)")
+    public Object checkPermission(ProceedingJoinPoint joinPoint, AuthPermission authPermission) throws Throwable {
+
+        AuthUser authUser = (AuthUser) joinPoint.getArgs()[0];
+        // joinPoint의 첫번째 인자를 가져옴
+        // ProceedingJoinPoint: 메서드 실행 정보를 담고 있는 객체
+        // joinPoint.getArgs(): joinPoint의 첫번째 매개변수를 가져옴
+
+        //
+
+    }
+}
 
 
+
+
+/*
 @Aspect
 @Component
 public class AuthPermissionAspect {
@@ -28,3 +73,6 @@ public class AuthPermissionAspect {
         return joinPoint.proceed();
     }
 }
+
+
+*/
