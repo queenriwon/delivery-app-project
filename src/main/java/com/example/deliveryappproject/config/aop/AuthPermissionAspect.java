@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,10 +32,18 @@ public Response<Void> createStore(
 @Component
 public class AuthPermissionAspect {
 
-    // 어노테이션에서 경로를 지정하는 방법
-    @Around("@annotation(com.example.deliveryappproject.config.aop.annotation.LogTrace)")
-    public Object checkPermission(ProceedingJoinPoint joinPoint) throws Throwable {
-    }
+//    // Pointcut 메서드 생성
+//    @Pointcut("@annotation(com.example.deliveryappproject.common.annotation.AuthPermission)")
+//    public void loggerPointcut() {
+//    }
+//    @Around("loggerPointcut()")
+//    public Object checkPermission(ProceedingJoinPoint joinPoint) throws Throwable {
+//    }
+//
+//    // 어노테이션에서 경로를 지정하는 방법
+//    @Around("@annotation(com.example.deliveryappproject.common.annotation.AuthPermission)")
+//    public Object checkPermission(ProceedingJoinPoint joinPoint) throws Throwable {
+//    }
 
     // authPermission 과 매개변수 AuthPermission authPermission 매핑하는 방법
     @Around("@annotation(authPermission)")

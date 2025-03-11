@@ -4,7 +4,7 @@ import com.example.deliveryappproject.common.annotation.Auth;
 import com.example.deliveryappproject.common.annotation.AuthPermission;
 import com.example.deliveryappproject.common.dto.AuthUser;
 import com.example.deliveryappproject.common.response.Response;
-import com.example.deliveryappproject.domain.category.dto.request.CategoryUpdateRequest;
+import com.example.deliveryappproject.domain.storecategory.dto.request.CategoryUpdateRequest;
 import com.example.deliveryappproject.domain.menucategory.dto.request.MenuCategoryCreateRequest;
 import com.example.deliveryappproject.domain.menucategory.service.MenuCategoryService;
 import com.example.deliveryappproject.domain.user.enums.UserRole;

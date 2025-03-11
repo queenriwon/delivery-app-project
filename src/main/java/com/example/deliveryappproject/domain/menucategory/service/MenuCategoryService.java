@@ -3,7 +3,7 @@ package com.example.deliveryappproject.domain.menucategory.service;
 import com.example.deliveryappproject.common.dto.AuthUser;
 import com.example.deliveryappproject.common.exception.ForbiddenException;
 import com.example.deliveryappproject.common.exception.NotFoundException;
-import com.example.deliveryappproject.domain.category.dto.request.CategoryUpdateRequest;
+import com.example.deliveryappproject.domain.storecategory.dto.request.CategoryUpdateRequest;
 import com.example.deliveryappproject.domain.menucategory.dto.request.MenuCategoryCreateRequest;
 import com.example.deliveryappproject.domain.menucategory.entity.MenuCategory;
 import com.example.deliveryappproject.domain.menucategory.repository.MenuCategoryRepository;
